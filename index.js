@@ -11,6 +11,13 @@ const connect = () => {
   mongoose.connect(process.env.DB, console.log('DB Connected'))
 }
 
+mongoose.connection.on('disconnected', () => {
+  console.log('mongoDB disconnected')
+})
+mongoose.connection.on('connected', () => {
+  console.log('mongoDB connected')
+})
+
 app.use(cors())
 app.use(express.json())
 

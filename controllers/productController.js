@@ -7,7 +7,16 @@ export const createProduct = async (req, res, next) => {
     const savedProduct = await newProduct.save()
     res.status(200).json(savedProduct)
   } catch (err) {
-    res.send(err).json(err)
+    res.send(err)
+  }
+}
+
+export const getProduct = async (req, res, next) => {
+  try {
+    const product = await Product.findById(req.params.id)
+    res.status(200).json(product)
+  } catch (err) {
+    console.log(err)
   }
 }
 
