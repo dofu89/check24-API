@@ -45,6 +45,14 @@ const ProductSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
+  type: {
+    type: String,
+    requred: true,
+  },
 })
 
-export default mongoose.model('Product', ProductSchema)
+const BeautyProduct = mongoose.model('BeautyProduct', ProductSchema)
+const TechnoProduct = mongoose.model('TechnoProduct', ProductSchema)
+const HouseholdProduct = mongoose.model('HouseholdProduct', ProductSchema)
+
+export { BeautyProduct, TechnoProduct, HouseholdProduct }

@@ -1,5 +1,5 @@
 import express from 'express'
-import mongoose from 'mongoose'
+import mongoose, { mongo } from 'mongoose'
 import dotenv from 'dotenv'
 import cors from 'cors'
 import productRoute from './routes/products.js'
@@ -11,10 +11,12 @@ const connect = () => {
   mongoose.connect(process.env.DB, console.log('DB Connected'))
 }
 
-mongoose.connection.on('disconnected', () => {
+const db = mongoose.connection
+
+db.on('disconnected', () => {
   console.log('mongoDB disconnected')
 })
-mongoose.connection.on('connected', () => {
+db.on('connected', () => {
   console.log('mongoDB connected')
 })
 
