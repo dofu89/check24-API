@@ -12,29 +12,27 @@ export const createTechnoProduct = async (req, res, next) => {
     const savedProduct = await newProduct.save()
     res.status(200).json(savedProduct)
   } catch (err) {
-    res.send(err)
+    next(err)
   }
 }
 
 export const createBeautyProduct = async (req, res, next) => {
   const newProduct = new BeautyProduct(req.body)
-
   try {
     const savedProduct = await newProduct.save()
     res.status(200).json(savedProduct)
   } catch (err) {
-    res.send(err)
+    next(err)
   }
 }
 
 export const createHouseholdProduct = async (req, res, next) => {
   const newProduct = new HouseholdProduct(req.body)
-
   try {
     const savedProduct = await newProduct.save()
     res.status(200).json(savedProduct)
   } catch (err) {
-    res.send(err)
+    next(err)
   }
 }
 
@@ -46,7 +44,7 @@ export const getTechnoProducts = async (req, res, next) => {
   try {
     res.status(200).json(products)
   } catch (err) {
-    console.log(err)
+    next(err)
   }
 }
 
@@ -56,7 +54,7 @@ export const getTechnoProduct = async (req, res, next) => {
     const product = await TechnoProduct.findById(req.params.id)
     res.status(200).json(product)
   } catch (err) {
-    console.log(err)
+    next(err)
   }
 }
 
@@ -66,7 +64,7 @@ export const getBeautyProducts = async (req, res, next) => {
   try {
     res.status(200).json(products)
   } catch (err) {
-    console.log(err)
+    next(err)
   }
 }
 
@@ -76,7 +74,7 @@ export const getBeautyProduct = async (req, res, next) => {
     const product = await BeautyProduct.findById(req.params.id)
     res.status(200).json(product)
   } catch (err) {
-    console.log(err)
+    next(err)
   }
 }
 //all beauty
@@ -85,7 +83,7 @@ export const getHouseholdProducts = async (req, res, next) => {
   try {
     res.status(200).json(products)
   } catch (err) {
-    console.log(err)
+    next(err)
   }
 }
 
@@ -95,7 +93,7 @@ export const getHouseholdProduct = async (req, res, next) => {
     const product = await HouseholdProduct.findById(req.params.id)
     res.status(200).json(product)
   } catch (err) {
-    console.log(err)
+    next(err)
   }
 }
 
@@ -109,7 +107,7 @@ export const getAllProducts = async (req, res, next) => {
     const allProducts = productsDB
     res.status(200).json(allProducts)
   } catch (err) {
-    console.log(err)
+    next(err)
   }
 }
 
@@ -124,6 +122,6 @@ export const getProduct = async (req, res, next) => {
     const allProducts = productsDB
     res.status(200).json(allProducts)
   } catch (err) {
-    console.log(err)
+    next(err)
   }
 }
