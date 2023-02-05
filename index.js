@@ -3,6 +3,7 @@ import mongoose, { mongo } from 'mongoose'
 import dotenv from 'dotenv'
 import cors from 'cors'
 import productRoute from './routes/products.js'
+import userRouter from './routes/userRoutes.js'
 
 const app = express()
 dotenv.config()
@@ -24,6 +25,18 @@ app.use(cors())
 app.use(express.json())
 
 app.use('/api/products', productRoute)
+app.use('/api/users', userRouter)
+
+app.use((err, req, res, next) => {
+  const errorStatus = err.status || 500
+  const errorMessage = err.message || 'Something went wrong!'
+  return res.status(errorStatus).json({
+    success: false,
+    status: errorStatus,
+    message: errorMessage,
+    stack: err.stack,
+  })
+})
 
 app.use((err, req, res, next) => {
   const errorStatus = err.status || 500
