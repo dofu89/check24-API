@@ -1,6 +1,6 @@
 # check24-API
 
-A Check24-API using MERN stack
+A Check24-API using MERN stack (see all branches)
 
 ## How to run app:
 
@@ -21,4 +21,4 @@ In the project directory:
 
 ### The app is in unfinished state. Things to be done:
 
-- Authentication
+- improvements
